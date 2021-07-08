@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/player/atlas/stand3.tres" type="Texture" id=1]
+[ext_resource path="res://objects/player/atlas/stand4.tres" type="Texture" id=2]
+[ext_resource path="res://objects/player/atlas/stand2.tres" type="Texture" id=3]
+[ext_resource path="res://objects/player/atlas/stand1.tres" type="Texture" id=4]
+[ext_resource path="res://objects/player/scripts/player.gd" type="Script" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 38.5592
+height = 10.1516
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "stand",
+"speed": 4.0
+} ]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mode = 2
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -45 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -45 )
+frames = SubResource( 2 )
+animation = "stand"
