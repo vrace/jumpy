@@ -17,6 +17,12 @@ func _ready():
 func _process(delta):
 	if touching:
 		force_length += delta
+	if $AnimatedSprite.animation == "jump_begin" and self.linear_velocity.y > 0:
+		$AnimatedSprite.play("jump_glide")
+	elif $AnimatedSprite.animation == "jump_glide" and self.linear_velocity.y == 0:
+		$AnimatedSprite.play("jump_end")
+		yield($AnimatedSprite, "animation_finished")
+		$AnimatedSprite.play("stand")
 	
 func _input(event):
 	if event is InputEventMouseButton:
@@ -33,6 +39,7 @@ func _input(event):
 			elif vec.x > 0:
 				$AnimatedSprite.flip_h = false
 			touching = false
+			$AnimatedSprite.play("jump_begin")
 
 func _integrate_forces(state):
 	if to_be_force != Vector2():
