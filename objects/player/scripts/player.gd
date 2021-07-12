@@ -28,7 +28,10 @@ func _input(event):
 			var player_position = self.get_global_transform_with_canvas().get_origin() - Vector2(0, 25)
 			var vec = (event.position - player_position).normalized()
 			to_be_force = vec * (force_length * 500)
-			print("force:", to_be_force)
+			if vec.x < 0:
+				$AnimatedSprite.flip_h = true
+			elif vec.x > 0:
+				$AnimatedSprite.flip_h = false
 			touching = false
 
 func _integrate_forces(state):

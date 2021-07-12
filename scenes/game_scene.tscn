@@ -9,10 +9,10 @@
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 1, 0.1 )
+motion_scale = Vector2( 0.1, 0.1 )
 
 [node name="blur_city" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 342.362, 141.592 )
+position = Vector2( 402.083, -76.2136 )
 scale = Vector2( 3.59321, 3.38125 )
 texture = ExtResource( 1 )
 
