@@ -9,9 +9,12 @@ var touching = false
 var force_length = 0
 var to_be_force = Vector2()
 
+export var default_animation = "stand"
+export var default_force_strength = 1000
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite.play("stand")
+	$AnimatedSprite.play(default_animation)
 	pass # Replace with function body.
 
 func _process(delta):
@@ -33,7 +36,7 @@ func _input(event):
 		elif event.button_index == 1 and not event.is_pressed():
 			var player_position = self.get_global_transform_with_canvas().get_origin() - Vector2(0, 25)
 			var vec = (event.position - player_position).normalized()
-			to_be_force = vec * (force_length * 500)
+			to_be_force = vec * (force_length * default_force_strength)
 			if vec.x < 0:
 				$AnimatedSprite.flip_h = true
 			elif vec.x > 0:

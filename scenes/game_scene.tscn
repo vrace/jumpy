@@ -30,6 +30,8 @@ position = Vector2( 302.047, 512.361 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 281.475, 381.68 )
+default_animation = "jump_glide"
+default_force_strength = 1500
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, -35 )
