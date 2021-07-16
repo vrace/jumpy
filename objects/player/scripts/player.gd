@@ -11,6 +11,7 @@ var to_be_force = Vector2()
 
 export var default_animation = "stand"
 export var default_force_strength = 1000
+signal player_jumped()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +44,7 @@ func _input(event):
 				$AnimatedSprite.flip_h = false
 			touching = false
 			$AnimatedSprite.play("jump_begin")
+			emit_signal("player_jumped")
 
 func _integrate_forces(state):
 	if to_be_force != Vector2():
